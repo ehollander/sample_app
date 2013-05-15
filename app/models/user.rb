@@ -36,8 +36,7 @@ before_save :create_remember_token
 
 
   def feed
-    # This is only a proto-feed.
-    Micropost.where("user_id = ?", id)
+    Micropost.from_users_followed_by(self)
   end
 
   private
